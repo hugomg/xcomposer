@@ -1,0 +1,363 @@
+BEGIN DEFINITIONS
+
+DEFINE	@	<Multi_key>
+DEFINE	_	<space>
+DEFINE	`	<dead_grave>
+DEFINE	^	<dead_circumflex>
+DEFINE	~	<dead_tilde>
+DEFINE	´	<dead_acute>
+DEFINE	"	<dead_diaeresis>
+DEFINE	ç	<ccedilla>
+
+END DEFINITIONS
+
+######################
+# Dead-by-default keys
+######################
+
+U0022	"	"
+
+###########
+# Accents
+###########
+
+U0060	`	``
+U005E	^	^^
+U007E	~	~~
+U00A8	¨	@""
+U00B4	´	´´
+
+U0060	`	`_
+U0027	'	´_
+U005E	^	^_
+U007E	~	~_
+
+U00C0	À	`A
+U00C1	Á	´A
+U00C2	Â	^A
+U00C3	Ã	~A
+
+U00C8	È	`E
+U00C9	É	´E
+U00CA	Ê	^E
+
+U00CC	Ì	`I
+U00CD	Í	´I
+U00CE	Î	^I
+
+U00D2	Ò	`O
+U00D3	Ó	´O
+U00D4	Ô	^O
+U00D5	Õ	~O
+
+U00D9	Ù	`U
+U00DA	Ú	´U
+U00DB	Û	^U
+
+U00C7	Ç	´C
+U00D1	Ñ	~N
+
+U00E0	à	`a
+U00E1	á	´a
+U00E2	â	^a
+U00E3	ã	~a
+
+U00E8	è	`e
+U00E9	é	´e
+U00EA	ê	^e
+
+U00EC	ì	`i
+U00ED	í	´i
+U00EE	î	^i
+
+U00F2	ò	`o
+U00F3	ó	´o
+U00F4	ô	^o
+U00F5	õ	~o
+
+U00F9	ù	`u
+U00FA	ú	´u
+U00FB	û	^u
+
+U00E7	ç	´c
+U00F1	ñ	~n
+
+U00C4	Ä	@"A
+U00CB	Ë	@"E
+U00CF	Ï	@"I
+U00D6	Ö	@"O
+U00DC	Ü	@"U
+
+U00E4	ä	@"a
+U00EB	ë	@"e
+U00EF	ï	@"i
+U00F6	ö	@"o
+U00FC	ü	@"u
+
+U00C5	Å	@Ao
+U00C6	Æ	@AE
+
+U00E5	å	@ao
+U00E6	æ	@ae
+
+###############
+# Greek Letters
+###############
+
+U03B1	α	@aa	alpha
+U03B2	β	@bb	beta
+U03B3	γ	@gg	gamma
+U03B4	δ	@dd	delta
+U03B5	ε	@ee	epsilon
+U03B6	ζ	@zz	zeta
+U03B7	η	@hh	eta
+U03B8	θ	@th	theta
+U03B9	ι	@ii	iota
+U03BA	κ	@kk	kappa
+U03BB	λ	@ll	lambda
+U03BC	μ	@mm	mu
+U03BD	ν	@nn	nu
+U03BE	ξ	@xx	xi
+U03BF	ο	@oo	omicron
+U03C0	π	@pp	pi
+U03C1	ρ	@rr	rho
+U03C3	σ	@ss	sigma
+U03C4	τ	@tt	tau
+U03C5	υ	@uu	upsilon
+U03C6	φ	@ff	phi
+U03C7	χ	@qq	chi
+U03C8	ψ	@yy	psi
+U03C9	ω	@ww	omega
+
+U03C2	ς	@sx	\varsigma
+U0278	ɸ	@o|	\phi
+
+U0391	Α	@AA	Alpha
+U0392	Β	@BB	Beta
+U0393	Γ	@GG	Gamma
+U0394	Δ	@DD	Delta
+U0395	Ε	@EE	Epsilon
+U0396	Ζ	@ZZ	Zeta
+U0397	Η	@HH	Eta
+U0398	Θ	@TH	Theta
+U0399	Ι	@II	Iota
+U039A	Κ	@KK	KappaF@
+U039B	Λ	@LL	Lambda
+U039C	Μ	@MM	Mu
+U039D	Ν	@NN	Nu
+U039E	Ξ	@XX	Xi
+U039F	Ο	@OO	Omicron
+U03A0	Π	@PP	Pi
+U03A1	Ρ	@RR	Rho
+U03A3	Σ	@SS	Sigma
+U03A4	Τ	@TT	Tau
+U03A5	Υ	@UU	Upsilon
+U03A6	Φ	@FF	Phi
+U03A7	Χ	@QQ	Chi
+U03A8	Ψ	@YY	Psi
+U03A9	Ω	@WW	Omega
+
+##########################
+# Blackboard bold letters
+##########################
+
+U2102	ℂ	@C|
+U210D	ℍ	@H|
+U2115	ℕ	@N|
+U2119	ℙ	@P|
+U211A	ℚ	@Q|
+U211D	ℝ	@R|
+U2124	ℤ	@Z|
+
+##########################
+# Summations and products
+##########################
+
+U220F	∏	@!PP_
+U2210	∐	@!PP?
+U2211	∑	@!SS_
+
+U22C0	⋀	@!V?
+U22C1	⋁	@!V_
+U22C2	⋂	@!U?
+U22C3	⋃	@!U_
+
+###########
+# Brackets
+###########
+
+U2308	⌈	@[-
+U2309	⌉	@]-
+U230A	⌊	@[\_
+U230B	⌋	@]\_
+
+U27E6	⟦	@|[
+U27E7	⟧	@|]
+
+# Mathematical angle brackets
+U27E8	⟨	@!<_
+U27E9	⟩	@!>_
+U27EA	⟪	@!<<
+U27EB	⟫	@!>>
+
+########
+# Arrows
+########
+
+# Single arrows
+U2190	←	@<-_
+U2191	↑	@|^_
+U2192	→	@->_
+U2193	↓	@|v_
+U2194	↔	@<->_
+
+U219C	↜	@<~_
+U219D	↝	@~>_
+
+U21A4	↤	@<-|_
+U21A6	↦	@|->_
+
+U21A9	↩	@<-)_
+U21AA	↪	@(->_
+
+U21AD	↭	@<~>_
+
+U21D0	⇐	@<=_
+U21D1	⇑	@||^_
+U21D2	⇒	@=>_
+U21D3	⇓	@||v_
+U21D4	⇔	@<=>_
+
+U21DC	⇜	@<z_
+U21DD	⇝	@z>_
+
+U27F5	⟵	@<--_
+U27F6	⟶	@-->_
+
+U27F8	⟸	@<==_
+U27F9	⟹	@==>_
+U27FA	⟺	@<==>_
+
+U27FB	⟻	@<--|_
+U27FC	⟼	@|-->_
+
+
+########
+# Logic
+########
+
+U00AC	¬	@-_
+
+U2200	∀	@A?
+U2203	∃	@E?
+U2204	∄	@E/?
+
+U2227	∧	@V?
+U2228	∨	@V_
+
+U22A4	⊤	@T_
+U22A5	⊥	@T?
+
+# Turnstiles
+U22A2	⊢	@|-_
+U22A3	⊣	@-|_
+U22A8	⊨	@|=_
+U22A9	⊩	@||-_
+U22AA	⊪	@|||-_
+U22AB	⊫	@||=_
+U22AC	⊬	@|-/
+U22AD	⊭	@|=/
+U22AE	⊮	@||-/
+U22AF	⊯	@||=/
+
+#######
+# Sets
+#######
+
+U2205	∅	@O/
+
+U2208	∈	@(-_
+U2209	∉	@(-/
+U220B	∋	@)-_
+U220C	∌	@)-/
+
+U2229	∩	@U?
+U222A	∪	@U_
+
+#######################
+# Comparison operators
+#######################
+
+# Symmetric
+U223C	∼	@~_
+U2241	≁	@~/
+
+U2243	≃	@~\__
+U2243	≃	@\_~_
+U2244	≄	@~\_/
+U2244	≄	@\_~/
+
+U2245	≅	@~=_
+U2245	≅	@=~_
+U2246	≆	@~=/
+U2246	≆	@=~/
+
+U2248	≈	@~~_
+U2249	≉	@~~/
+
+U2254	≔	@:=_
+U2255	≕	@=:_
+
+U225C	≜	@=^_
+U225D	≝	@=d_
+
+
+U2260	≠	@=/
+U2261	≡	@==_
+U2262	≢	@==/
+U2264	≤	@=<_
+U2265	≥	@>=_
+U226E	≮	@</
+U226F	≯	@>/
+U2270	≰	@<=/
+U2271	≱	@>=/
+
+
+U2282	⊂	@(_
+U2283	⊃	@)_
+U2284	⊄	@(/
+U2285	⊅	@)/
+U2286	⊆	@(=_
+U2287	⊇	@)=_
+U2288	⊈	@(=/
+U2289	⊉	@)=/
+
+U228F	⊏	@[_
+U2290	⊐	@]_
+U2291	⊑	@[=_
+U2292	⊒	@]=_
+
+############
+# Arithmetic
+############
+
+U00F7	÷	@-:
+U00F7	÷	@:-
+
+U00D7	×	@x_
+
+##############
+# Miscelaneous
+##############
+
+U00B1	±	@+-
+U2213	∓	@-+
+
+U2026	…	@...
+
+U22C6	⋆	@*_
+
+U201C	“	@``	 Left double quotation mark
+U201D	”	@´´	 Right double quotation mark
+
+U2113	ℓ	@l_	 Mathematical symbol "ell"

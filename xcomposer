@@ -1,0 +1,298 @@
+#! /usr/bin/lua
+
+
+-- Rules in .XCompose files are hard to read so I made this script to convert
+-- a more readable notation to the official notation
+
+local lpeg = require 'lpeg'
+
+--
+-- Parsing
+
+local function read_input(infile)
+  local lines = {}
+  for line in infile:lines() do
+    table.insert(lines, line)
+  end
+  return lines
+end
+
+local function non_blank_iterator(lines)
+  return coroutine.wrap(function()
+      for i, line in ipairs(lines) do
+        local s = line:match("([^#]*)#?.*")
+        if not s:match("^%s*$") then
+          coroutine.yield(line, i)
+        end
+      end
+  end)
+end
+
+--
+-- Rule DSL parsing
+--
+
+local parse_rule, pfrom_utf_8decode_utf8
+
+do
+
+  -- UTF8-handling code from lpeg documentation
+
+  -- decode a one-byte UTF-8 sequence
+  local function f1(s)
+    local c1 = string.byte(s, 1, 1)
+    return c1
+  end
+
+  -- decode a two-byte UTF-8 sequence
+  local function f2 (s)
+    local c1, c2 = string.byte(s, 1, 2)
+    return c1 * 64 + c2 - 12416
+  end
+
+  -- decode a three-byte UTF-8 sequence
+  local function f3 (s)
+    local c1, c2, c3 = string.byte(s, 1, 3)
+    return (c1 * 64 + c2) * 64 + c3 - 925824
+  end
+
+  -- decode a four-byte UTF-8 sequence
+  local function f4 (s)
+    local c1, c2, c3, c4 = string.byte(s, 1, 4)
+    return ((c1 * 64 + c2) * 64 + c3) * 64 + c4 - 63447168
+  end
+
+  local cont = lpeg.R("\128\191")   -- continuation byte
+
+  local utf8 = lpeg.R("\0\127") / f1
+             + lpeg.R("\194\223") * cont / f2
+             + lpeg.R("\224\239") * cont * cont / f3
+             + lpeg.R("\240\244") * cont * cont * cont / f4
+
+  local evt_pattern =
+    ((lpeg.P('\\') * lpeg.C(utf8)) /
+        function(c) return {'ESCAPED', c} end) +
+    ((lpeg.C(utf8) - lpeg.P('\\')) /
+        function(c) return {'CHAR', c} end)
+
+  local rule_pattern = lpeg.Ct(evt_pattern^0 * -lpeg.P(1))
+
+  parse_rule = function(rulestr)
+    return rule_pattern:match(rulestr)
+  end
+
+  decode_utf8 = function(str)
+    return lpeg.match(lpeg.Ct(utf8^0 * -lpeg.P(1)), str)
+  end
+end
+
+--
+-- Interpreting the events
+--
+
+local add_override, keysym_from_event
+
+do
+
+  -- Key Symbol definitions taken from
+  -- /usr/include/X11/keysymdef.h
+  local keysyms = {
+    [' '] = "<space>",
+    ['!'] = "<exclam>",
+    ['\"'] = "<quotedbl>",
+    ['#'] = "<numbersign>",
+    ['$'] = "<dollar>",
+    ['%'] = "<percent>",
+    ['&'] = "<ampersand>",
+    ['\''] = "<apostrophe>",
+    ['('] = "<parenleft>",
+    [')'] = "<parenright>",
+    ['*'] = "<asterisk>",
+    ['+'] = "<plus>",
+    [','] = "<comma>",
+    ['-'] = "<minus>",
+    ['.'] = "<period>",
+    ['/'] = "<slash>",
+    -- 0-9
+    [':'] = "<colon>",
+    [';'] = "<semicolon>",
+    ['<'] = "<less>",
+    ['='] = "<equal>",
+    ['>'] = "<greater>",
+    ['?'] = "<question>",
+    ['@'] = "<at>",
+    -- A-Z
+    ['['] = "<bracketleft>",
+    ['\\'] = "<backslash>",
+    [']'] = "<bracketright>",
+    ['^'] = "<asciicircum>",
+    ['_'] = "<underscore>",
+    ['`'] = "<grave>",
+    -- a-z
+    ['{'] = "<braceleft>",
+    ['|'] = "<bar>",
+    ['}'] = "<braceright>",
+    ['~'] = "<asciitilde>",
+  }
+
+  for _, range in ipairs{{'0','9'},{'A','Z'},{'a','z'}} do
+    local i1 = string.byte(range[1])
+    local i2 = string.byte(range[2])
+    for i = i1,i2 do
+      c = string.char(i)
+      keysyms[c] = "<"..c..">"
+    end
+  end
+
+  local overrides = {}
+
+  add_override = function(c, sym)
+    overrides[c] = sym
+  end
+
+  keysym_from_event = function(evt)
+    local tag, c = evt[1], evt[2]
+
+    if tag == 'ESCAPED' then
+      return keysyms[c] or panic("Unknown char %s", c)
+    elseif tag == 'CHAR' then
+      return overrides[c] or keysyms[c] or panic("unknown char %s", c)
+    else
+      assert(false)
+    end
+  end
+end
+
+--
+-- Read the input file
+--
+
+local function syntax_error(lineno, ...)
+  io.stderr:write(string.format("Syntax error line %d:\n", lineno))
+  io.stderr:write(string.format(...))
+  io.stderr:write("\n")
+  os.exit(1)
+end
+
+local function process_rules(input_rules)
+
+  local getline = non_blank_iterator(input_rules)
+
+  local the_rules = {}
+
+  do
+    local line, lineno = getline()
+    if line ~= "BEGIN DEFINITIONS" then
+      syntax_error(lineno, "expected BEGIN DEFINITIONS")
+    end
+  end
+
+  while true do
+    local line, lineno = getline(input)
+
+    if not line then syntax_error(lineno, "expected END DEFINITIONS")end
+    if line == "END DEFINITIONS" then break end
+
+    local c, sym = line:match("DEFINE%s+(%S+)%s+(%S+)")
+    if not c then syntax_error(lineno, "expected DEFINE") end
+    add_override(c, sym)
+  end
+
+  while true do
+    local line, lineno = getline(input)
+    if not line then break end
+
+    local code, output, rule_str = line:match("U(%x+)%s+(%S+)%s+(%S+)")
+    if not code then syntax_error(lineno, "bad rule") end
+
+    local evts = parse_rule(rule_str)
+    for i = 1,#evts do
+      evts[i] = keysym_from_event(evts[i])
+    end
+
+    table.insert(the_rules, {
+      codepoint = code,
+      output = output,
+      evts = evts,
+      rule_str = rule_str,
+      lineno = lineno,
+    })
+  end
+
+  return the_rules
+end
+
+--
+-- Check for errors
+--
+
+local function is_prefix_or_suffix(evts1, evts2)
+  for i = 1, math.min(#evts1, #evts2) do
+    if evts1[i] ~= evts2[i] then return false end
+  end
+  return true
+end
+
+local function check_for_errors(the_rules)
+  local has_errors = false
+
+  local function rule_error(...)
+    has_errors = true
+    io.stderr:write(string.format(...))
+    io.stderr:write("\n")
+  end
+
+  for rulei, rule in ipairs(the_rules) do
+
+    local points = decode_utf8(rule.output)
+
+    -- check that is a single codepoint
+    if #points ~= 1 then
+      rule_error(
+        "Line %d: Rules does not output a single utf8 codepoint",
+        rule.lineno)
+    end
+
+    -- check that codepoint is correct
+    if tonumber(rule.codepoint,16) ~= points[1] then
+      rule_error(
+        "Wrong character, expected U%s, got %s (U%04X)",
+        rule.codepoint, output, points[1])
+    end
+
+    -- check that is not a prefix or suffix of existing rule
+    for rulej = 1, rulei-1 do
+      local other_rule = the_rules[rulej]
+      if is_prefix_or_suffix(other_rule.evts, rule.evts) then
+        rule_error(
+          "Incompatible rules\nline %d= %s\nline %d= %s",
+          other_rule.lineno, other_rule.rule_str,
+          rule.lineno, rule.rule_str)
+      end
+    end
+
+  end
+
+  if has_errors then
+    os.exit(1)
+  end
+
+end
+
+--
+-- Main
+--
+
+
+local input_lines = read_input(io.stdin)
+local the_rules = process_rules(input_lines)
+check_for_errors(the_rules)
+
+print("THIS FILE WAS AUTOMATICALLY GENERATED BY xcomposer")
+print("DO NOT MODIFY IT BY HAND")
+print("")
+for _, rule in ipairs(the_rules) do
+  print(string.format("%s : \"%s\"",
+                      table.concat(rule.evts, " "),
+                      rule.output:gsub('"', '\\"')))
+end
