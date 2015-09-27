@@ -17,6 +17,7 @@ local function format(rawdata)
         dead = raw[4],
     }
     keysyms[sym.str] = sym
+    keysyms[i] = sym
   end
  
   return keysyms
