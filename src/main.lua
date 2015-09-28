@@ -244,6 +244,26 @@ if not homedir then
   io.exit(1)
 end
 
+for _, envvar in ipairs({"GTK_IM_MODULE", "QT_IM_MODULE"}) do
+  local value = os.getenv(envvar)
+  if not value then
+    io.stderr:write("Composition sequences may not work because the ")
+    io.stderr:write(envvar," environment\n")
+    io.stderr:write("variable is not set.")
+    io.stderr:write(" Consider adding the following to your .xsessionrc:\n")
+    io.stderr:write("    export ", envvar, "=\"xim\"\n")
+    io.stderr:write("\n")
+  end
+  if value == "ibus" then
+    io.stderr:write("Environment variable ",envvar," is set to \"ibus\" ")
+    io.stderr:write("but ibus ignores .XCompose\n")
+    io.stderr:write("files. ")
+    io.stderr:write("Consider using \"xim\" or another input module")
+    io.stderr:write(" that supports .XCompose\n")
+    io.stderr:write("\n")
+  end
+end
+
 local function arg_input(filename)
   if filename == '-' then
     io.stderr:write("Reading from standard input...\n")
