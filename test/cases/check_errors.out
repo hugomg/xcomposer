@@ -1,0 +1,7 @@
+xcomposer encountered an error:
+
+Line 2: Rule does not output a single utf8 codepoint
+Line 5: Wrong character. Expected 'A' (U0041), got 'z' (U007A)
+Incompatible rules:
+  Line 8: a_
+  Line 9: a_

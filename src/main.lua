@@ -151,7 +151,7 @@ local function check_for_errors(the_rules)
       local other_rule = the_rules[rulej]
       if is_prefix_or_suffix(other_rule.keys, rule.keys) then
         table.insert(error_msgs, (string.format(
-                       "Incompatible rules:\n  Line %d = %s\n  Line %d = %s",
+                       "Incompatible rules:\n  Line %d: %s\n  Line %d: %s",
                        other_rule.lineno, other_rule.keystr,
                        rule.lineno, rule.keystr)))
       end
