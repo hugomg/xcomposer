@@ -52,25 +52,4 @@ You can also use `-o -` to output to standard output.
 
 ## The xcomposer rule file
 
-Comments start with `#` and continue until the end of the line.
-
-Each non-blank line describes one compose rule. For example, the following rule makes it possible to write `α` by typing <kbd>Compose</kbd>  <kbd>a</kbd> <kbd>a</kbd>:
-
-    U03B1   α       aa
-
-The contains three fields. The second field is the character that is output by the rule. The first field is the Unicode codepoint number for that character and the third field describes the sequence of keys that need to be pressed after the <kbd>Compose</kbd> key.
-
-The redundancy between the first and second fields is to avoid having the rule output the wrong character due to a typo or copy-paste error. A character-selection application such as `kcharselect` is a good way to find the numeric code for special characters.
- 
-
-Use `_` to represent ` ` (space) in rules. For example, the following rule allows us to write `⊢` as <kbd>Compose</kbd> <kbd>|</kbd> <kbd>-</kbd> <kbd>space</kbd>:
-
-    U22A2   ⊢       |-_
-
-To represent a literal underscore use `\_`.
-
-In the current version of `xcomposer` it is impossible to write rules involving whitespace characters other than space (for example, TAB). We may address this limitation in a future version.
-
-## Examples
-
 My personal `xcomposer` rule file can be found in the "examples" folder.
