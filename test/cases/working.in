@@ -1,13 +1,9 @@
-#This is a very small sample file
+-- This is a very small sample file
 
-U03B1	α	aa	# alpha
+rule	"α"	"aa"	-- alpha
+rule	"→"	"-> "
+rule	"⌊"	"[_"
+rule	"⌋"	"]_"
 
-# Underscore means space
-U2192	→	->_
-
-# Backslashes escape
-U230A	⌊	[\_
-U230B	⌋	\]\_
-
-# Certain keys have a dead and a non-dead version
-U2191	↑	|^_
+-- Certain keys have a dead and a non-dead version
+rule	"↑"	"|^ "

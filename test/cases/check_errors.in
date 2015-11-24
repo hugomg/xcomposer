@@ -1,9 +1,3 @@
-# Large character
-U0041 AB aa
-
-# Wrong codepoint
-U0041 z z
-
-# Incompatibility
-U0041 A a_ 
-U0041 A a_
+-- Incompatibility
+rule "X" "a "
+rule "Y" "a "

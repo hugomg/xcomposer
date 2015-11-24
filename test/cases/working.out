@@ -2,7 +2,6 @@
 # DO NOT MODIFY IT BY HAND
 
 include "%L"
-
 <Multi_key> <U0061> <U0061> : "α"
 <Multi_key> <U002D> <U003E> <U0020> : "→"
 <Multi_key> <U005B> <U005F> : "⌊"
