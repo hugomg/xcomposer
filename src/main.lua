@@ -70,6 +70,7 @@ local function xcomposer(args)
     _ENV2[k] = v
   end
   _ENV2.rule = rule
+  _ENV2.config = cf.config
 
   if infilename == nil then
     io.stderr:write("Reading from standard input...\n")

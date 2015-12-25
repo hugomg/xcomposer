@@ -9,6 +9,8 @@ ComposeFile.__index = ComposeFile
 
 ComposeFile.new = function()
   local self = {}
+  self.config = {}
+  self.config.use_system_compose_file = true
   self.rules = {}
   setmetatable(self, ComposeFile)
   return self
@@ -21,7 +23,7 @@ local function parse_input(use_compose_key, input)
   local function evt_codepoint(u) return string.format("<U%04X>", u) end
 
   local possibilities = {}
-  
+
   if use_compose_key then
     table.insert(possibilities, { evt_keysym('Multi_key') })
   end
@@ -90,7 +92,9 @@ local function quote_xcompose_rule_output(str)
 end
 
 function ComposeFile:save_to_file(outfile)
-  outfile:write( 'include "%L"\n' )
+  if self.config.use_system_compose_file then
+    outfile:write( 'include "%L"\n' )
+  end
   for _, rule in ipairs(self.rules) do
     outfile:write(string.format("%s : %s\n",
       table.concat(rule.input, " "),

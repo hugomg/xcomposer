@@ -41,7 +41,7 @@ local function is_prefix_or_suffix(xs, ys)
 end
 
 
--- 
+--
 --
 local function supercurry(argspec, the_function)
 
