@@ -7,6 +7,7 @@ local XCOMPOSER_VERSION = '2.0'
 local XCOMPOSER_FULL_NAME = XCOMPOSER_NAME .. " " .. XCOMPOSER_VERSION
 
 local ComposeFile = require 'xcomposer.ComposeFile'
+local keysyms     = require 'xcomposer.keysyms'
 local util        = require 'xcomposer.util'
 
 local argparse = require 'argparse'
@@ -71,6 +72,8 @@ local function xcomposer(args)
   end
   _ENV2.rule = rule
   _ENV2.config = cf.config
+  _ENV2.utf8 = utf8
+  _ENV2.keysyms = keysyms
 
   if infilename == nil then
     io.stderr:write("Reading from standard input...\n")
