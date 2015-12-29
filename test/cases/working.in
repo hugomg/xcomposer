@@ -1,9 +1,0 @@
--- This is a very small sample file
-
-rule	"α"	"aa"	-- alpha
-rule	"→"	"-> "
-rule	"⌊"	"[_"
-rule	"⌋"	"]_"
-
--- Certain keys have a dead and a non-dead version
-rule	"↑"	"|^ "
