@@ -3,7 +3,7 @@
 -- a more readable notation to the official notation
 
 local XCOMPOSER_NAME    = "xcomposer"
-local XCOMPOSER_VERSION = '2.0'
+local XCOMPOSER_VERSION = '3.0'
 local XCOMPOSER_FULL_NAME = XCOMPOSER_NAME .. " " .. XCOMPOSER_VERSION
 
 local ComposeFile = require 'xcomposer.ComposeFile'
