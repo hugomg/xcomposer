@@ -1,302 +1,165 @@
-----------------
--- Greek Letters
-----------------
+--
+-- Greek
+--
 
-rule	"α"	"aa"	-- alpha
-rule	"β"	"bb"	-- beta
-rule	"γ"	"gg"	-- gamma
-rule	"δ"	"dd"	-- delta
-rule	"ε"	"ee"	-- epsilon
-rule	"ζ"	"zz"	-- zeta
-rule	"η"	"hh"	-- eta
-rule	"θ"	"th"	-- theta
-rule	"ι"	"ii"	-- iota
-rule	"κ"	"kk"	-- kappa
-rule	"λ"	"ll"	-- lambda
-rule	"μ"	"mm"	-- mu
-rule	"ν"	"nn"	-- nu
-rule	"ξ"	"xx"	-- xi
-rule	"ο"	"oo"	-- omicron
-rule	"π"	"pp"	-- pi
-rule	"ρ"	"rr"	-- rho
-rule	"σ"	"ss"	-- sigma
-rule	"τ"	"tt"	-- tau
-rule	"υ"	"uu"	-- upsilon
-rule	"φ"	"ff"	-- phi
-rule	"χ"	"qq"	-- chi
-rule	"ψ"	"ps"	-- psi
-rule	"ω"	"ww"	-- omega
-
-rule	"ς"	"sx"	-- \varsigma
-rule	"ɸ"	"o|"	-- \phi
-
-rule	"Α"	"AA"	-- Alpha
-rule	"Β"	"BB"	-- Beta
-rule	"Γ"	"GG"	-- Gamma
-rule	"Δ"	"DD"	-- Delta
-rule	"Ε"	"EE"	-- Epsilon
-rule	"Ζ"	"ZZ"	-- Zeta
-rule	"Η"	"HH"	-- Eta
-rule	"Θ"	"TH"	-- Theta
-rule	"Ι"	"II"	-- Iota
-rule	"Κ"	"KK"	-- KappaF
-rule	"Λ"	"LL"	-- Lambda
-rule	"Μ"	"MM"	-- Mu
-rule	"Ν"	"NN"	-- Nu
-rule	"Ξ"	"XX"	-- Xi
-rule	"Ο"	"OO"	-- Omicron
-rule	"Π"	"PP"	-- Pi
-rule	"Ρ"	"RR"	-- Rho
-rule	"Σ"	"SS"	-- Sigma
-rule	"Τ"	"TT"	-- Tau
-rule	"Υ"	"UU"	-- Upsilon
-rule	"Φ"	"FF"	-- Phi
-rule	"Χ"	"QQ"	-- Chi
-rule	"Ψ"	"PS"	-- Psi
-rule	"Ω"	"WW"	-- Omega
-
-----------------------------------------------------
--- Blackboard bold letters
-----------------------------------------------------
-
-rule	"ℂ"	"C|"
-rule	"ℍ"	"H|"
-rule	"ℕ"	"N|"
-rule	"ℙ"	"P|"
-rule	"ℚ"	"Q|"
-rule	"ℝ"	"R|"
-rule	"ℤ"	"Z|"
-
-----------------------------------------------------
--- Summations and products
-----------------------------------------------------
-
-rule	"∏"	"!PP "
-rule	"∐"	"!PP?"
-rule	"∑"	"!SS"
-
-rule	"⋀"	"!V?"
-rule	"⋁"	"!V "
-rule	"⋂"	"!U?"
-rule	"⋃"	"!U "
-
-----------------------
--- Brackets
-----------------------
-
-rule	"⌈"	"[-"
-rule	"⌉"	"]-"
-rule	"⌊"	"[_"
-rule	"⌋"	"]_"
-
-rule	"⟦"	"|["
-rule	"⟧"	"|]"
-
--- Mathematical angle brackets
-rule	"⟨"	"!< "
-rule	"⟩"	"!> "
-rule	"⟪"	"!<<"
-rule	"⟫"	"!>>"
-
-----------------
--- Arrows
-----------------
-
--- Single arrows
-rule	"←"	"<- "
-rule	"↑"	"|^ "
-rule	"→"	"-> "
-rule	"↓"	"|v "
-rule	"↔"	"<-> "
-
-rule	"↜"	"<~ "
-rule	"↝"	"~> "
-
-rule	"↤"	"<-| "
-rule	"↦"	"|-> "
-
-rule	"↩"	"<-) "
-rule	"↪"	"(-> "
-
-rule	"↭"	"<~> "
-
-rule	"⇐"	"<= "
-rule	"⇑"	"||^ "
-rule	"⇒"	"=> "
-rule	"⇓"	"||v "
-rule	"⇔"	"<=> "
-
-rule	"⇜"	"<z "
-rule	"⇝"	"z> "
-
-rule	"⟵"	"<-- "
-rule	"⟶"	"--> "
-
-rule	"⟸"	"<== "
-rule	"⟹"	"==> "
-rule	"⟺"	"<==> "
-
-rule	"⟻"	"<--| "
-rule	"⟼"	"|--> "
-
-
-----------------
--- Logic
-----------------
-
-rule	"¬"	"- "
-
-rule	"∀"	"A?"
-rule	"∃"	"E?"
-rule	"∄"	"E/?"
-
-rule	"∧"	"V?"
-rule	"∨"	"V "
-
-rule	"⊤"	"T "
-rule	"⊥"	"T?"
-
--- Turnstiles
-rule	"⊢"	"|- "
-rule	"⊣"	"-| "
-rule	"⊨"	"|= "
-rule	"⊩"	"||- "
-rule	"⊪"	"|||- "
-rule	"⊫"	"||= "
-rule	"⊬"	"|-/"
-rule	"⊭"	"|=/"
-rule	"⊮"	"||-/"
-rule	"⊯"	"||=/"
-
---------------
--- Sets
---------------
-
-rule	"∅"	"O/"
-
-rule	"∈"	"(- "
-rule	"∉"	"(-/"
-rule	"∋"	")- "
-rule	"∌"	")-/"
-
-rule	"∩"	"U?"
-rule	"∪"	"U "
-
-----------------------------------------------
--- Comparison operators
-----------------------------------------------
-
--- Symmetric
-rule	"∼"	"~ "
-rule	"≁"	"~/"
-
-rule	"≃"	"~_ "
-rule	"≃"	"_~ "
-rule	"≄"	"~_/"
-rule	"≄"	"_~/"
-
-rule	"≅"	"~= "
-rule	"≅"	"=~ "
-rule	"≆"	"~=/"
-rule	"≆"	"=~/"
-
-rule	"≈"	"~~ "
-rule	"≉"	"~~/"
-
-rule	"≔"	":= "
-rule	"≕"	"=: "
-
-rule	"≜"	"=^ "
-rule	"≝"	"=d "
-
-
-rule	"≠"	"=/"
-rule	"≡"	"== "
-rule	"≢"	"==/"
-rule	"≤"	"=< "
-rule	"≥"	">= "
-rule	"≮"	"</"
-rule	"≯"	">/"
-rule	"≰"	"<=/"
-rule	"≱"	">=/"
-
-
-rule	"⊂"	"( "
-rule	"⊃"	") "
-rule	"⊄"	"(/"
-rule	"⊅"	")/"
-rule	"⊆"	"(= "
-rule	"⊇"	")= "
-rule	"⊈"	"(=/"
-rule	"⊉"	")=/"
-
-rule	"⊏"	"[ "
-rule	"⊐"	"] "
-rule	"⊑"	"[= "
-rule	"⊒"	"]= "
-
-------------------------
--- Arithmetic
-------------------------
-
-rule	"÷"	"-:"
-rule	"÷"	":-"
-
--- U00D7	×	x 
-
-----------------------------
--- Miscelaneous
-----------------------------
-
-rule	"±"	"+-"
-rule	"∓"	"-+"
-
-rule	"⋆"	"* "
-
-rule	"“"	"``"	 -- Left double quotation mark
-rule	"”"	"´´"	 -- Right double quotation mark
-
-rule	"ℓ"	"l "	 -- Mathematical symbol "ell"
-
--------------------------------------
--- Make dead keys behave like Windows
--------------------------------------
-
-local keysyms = require 'xcomposer.keysyms'
-local utf     = require 'dromozoa.utf8'
-
-local function char_list(s)
-    local cs = {}
-    for i, c in utf.codes(s) do
-        cs[i] = utf.char(c)
-    end
-    return cs
-end
-
-local accents = char_list [[`~^´¨]]
-
-local consonants = char_list (
-    [[bcdfghjklmnpqrstvwxyz]]..
-    [[BCDFGHJKLMNPQRSTVWXYZ]]..
-    [[0123456789-=!@#$%^&*()_+[]\{}|;:'",./<>?]]
-)
-
-local accent_output = {
-    ["´"] = "\'",
-    ["¨"] = "\"",
+local greek = {
+  a="α",A="Α",
+  b="β",B="Β",
+  g="γ",G="Γ",
+  d="δ",D="Δ",
+  e="ε",E="Ε",
+  z="ζ",Z="Ζ",
+  h="η",H="Η",
+  j="θ",J="Θ",
+  i="ι",I="Ι",
+  k="κ",K="Κ",
+  l="λ",L="Λ",
+  m="μ",M="Μ",
+  n="ν",N="Ν",
+  x="ξ",X="Ξ",
+  o="ο",O="Ο",
+  p="π",P="Π",
+  r="ρ",R="Ρ",
+  s="σ",S="Σ",
+  t="τ",T="Τ",
+  u="υ",U="Υ",
+  f="φ",F="Φ",
+  q="χ",Q="Χ",
+  y="ψ",Y="Ψ",
+  w="ω",W="Ω",
 }
 
-for _, accent in ipairs(accents) do 
-    for _, consonant in ipairs(consonants) do
-        if not
-            (accent == "´" and consonant:lower() == 'c' or
-             accent == '~' and consonant:lower() == 'n')
-        then
-            local input  = { keysyms[accent].dead, keysyms[consonant].live }
-            local output = (accent_output[accent] or accent) .. consonant 
-            rule {compose_key=false, input=input, output=output}
-        end
-    end
+for c, output in pairs(greek) do
+  rule {output=output, compose_key=false, input={keysym'dead_greek', c}}
+  rule {output=output, compose_key=true,  input={'g', c}}
 end
+
+--
+-- Vulgar Fractions
+--
+
+rule "¼" "14"
+rule "½" "12"
+rule "¾" "34"
+
+
+--
+-- Rules
+--
+
+rule "ℂ" "C|"
+rule "ℍ" "H|"
+rule "ℕ" "N|"
+rule "ℙ" "P|"
+rule "ℚ" "Q|"
+rule "ℝ" "R|"
+rule "ℤ" "Z|"
+
+rule "∏" "!PP "
+rule "∐" "!PP?"
+rule "∑" "!SS"
+rule "⋀" "!V?"
+rule "⋁" "!V "
+rule "⋂" "!U?"
+rule "⋃" "!U "
+rule "⌈" "[-"
+rule "⌉" "]-"
+rule "⌊" "[_"
+rule "⌋" "]_"
+rule "⟦" "|["
+rule "⟧" "|]"
+
+rule "⟨" "!< "
+rule "⟩" "!> "
+rule "⟪" "!<<"
+rule "⟫" "!>>"
+
+rule "¬" "- "
+rule "∀" "A?"
+rule "∃" "E?"
+rule "∄" "E/?"
+rule "∧" "V?"
+rule "∨" "V "
+
+rule "⊤" "T "
+rule "⊥" "T?"
+
+rule "∩" "U?"
+rule "∪" "U "
+
+rule "∅" "O/"
+
+rule "÷" "-:"
+rule "÷" ":-"
+rule "ℓ" "l "
+
+rule "≔" ":= "
+rule "≕" "=: "
+rule "≜" "=^ "
+rule "≝" "=d "
+
+--
+-- Binary Predicates
+--
+
+local function bin_pred(yes, no, m)
+  if yes then rule(yes, m.." ") end
+  if no  then rule(no,  m.."/") end
+end
+
+bin_pred("⊢", "⊬", "|-")
+bin_pred("⊣", nil, "-|")
+bin_pred("⊨", "⊭", "|=")
+bin_pred("⊩", "⊮", "||-")
+bin_pred("⊫", "⊯", "||=")
+bin_pred("⊪", nil, "|||-")
+bin_pred("∈", "∉", "(-")
+bin_pred("∼", "≁", "~")
+bin_pred("≃", "≄", "~_")
+bin_pred("≃", "≄", "_~")
+bin_pred("≅", "≆", "~=")
+bin_pred("≅", "≆", "=~")
+bin_pred("≈", "≉", "~~")
+bin_pred("=", "≠", "=")
+bin_pred("≡", "≢", "==")
+bin_pred("≤", "≰", "=<")
+bin_pred("≥", "≱", ">=")
+bin_pred(nil, "≮", "<")
+bin_pred(nil, "≯", ">")
+bin_pred("⊂", "⊄", "(")
+bin_pred("⊃", "⊅", ")")
+bin_pred("⊆", "⊈", "(=")
+bin_pred("⊇", "⊉", ")=")
+bin_pred("⊏", nil, "[")
+bin_pred("⊐", nil, "]")
+bin_pred("⊑", nil, "[=")
+bin_pred("⊒", nil, "]=")
+
+--
+-- Arrows
+--
+
+local function lr_arrow(arr_l, arr_r, arr_lr, m, l, r)
+  l = l or ''
+  r = r or ''
+  if arr_l  then rule(arr_l,  "<".. m .. r .." ") end
+  if arr_r  then rule(arr_r,   l .. m ..">".." ") end
+  if arr_lr then rule(arr_lr, "<".. m ..">".." ") end
+end
+
+local function ud_arrow(arr_u, arr_d, m)
+  if arr_u then rule(arr_u, m .."^".." ") end
+  if arr_d then rule(arr_d, m .."v".." ") end
+end
+
+lr_arrow("←", "→", "↔",  "-" ); ud_arrow("↑", "↓", "|")
+lr_arrow("⇐", "⇒", "⇔",  "=" ); ud_arrow("⇑", "⇓", "||")
+lr_arrow("↜", "↝", "↭",  "~" )
+lr_arrow("⇜", "⇝", nil,  "z" )
+lr_arrow("⟵", "⟶", nil,  "--")
+lr_arrow("⟸", "⟹", "⟺",  "==")
+lr_arrow("↤", "↦", nil,  "-" , "|", "|")
+lr_arrow("⟻", "⟼", nil,  "--", "|", "|")
+lr_arrow("↩", "↪", nil,  "-" , "(", ")")
 
 
