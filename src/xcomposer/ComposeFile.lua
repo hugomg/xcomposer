@@ -94,13 +94,24 @@ local function quote_xcompose_rule_output(str)
 end
 
 function ComposeFile:save_to_file(outfile)
+  
+  local items = {}
+  for i, rule in ipairs(self.rules) do
+    items[i] = {table.concat(rule.input, " "), quote_xcompose_rule_output(rule.output)}
+  end
+
+  -- Ensure a deterministic output (good for diffing the resulting xcompose files)
+  table.sort(items, function(a, b)
+    if a[2] ~= b[2] then return a[2] < b[2] end -- output
+    if a[1] ~= b[1] then return a[1] < b[1] end -- input
+    return false
+  end)
+
   if self.config.use_system_compose_file then
     outfile:write( 'include "%L"\n' )
   end
-  for _, rule in ipairs(self.rules) do
-    outfile:write(string.format("%s : %s\n",
-      table.concat(rule.input, " "),
-      quote_xcompose_rule_output(rule.output)))
+  for _, item in ipairs(items) do
+    outfile:write(string.format("%s : %s\n", item[1], item[2]))
   end
 end
 
